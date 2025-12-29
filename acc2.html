@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account 2 - Novarift's Service</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f2f2f2;
+    }
+
+    header.title {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .account-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .account-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .account-card h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .account-card p {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .buy-btn {
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .buy-btn:hover {
+      background-color: #45a049;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .bottom-nav a, .bottom-nav button {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .bottom-nav .active {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="title">
+    Account 2 Details
+  </header>
+
+  <main>
+    <div class="account-card">
+      <img src="acc (2).jpg" alt="Account 2 Image">
+      <h2>Account 1</h2>
+      <p>Price: 600,000₮</p>
+      <p>Description: suuper acc.</p>
+      <button class="buy-btn" onclick="window.location.href='https://www.facebook.com/fxel.neo#'">Buy Now</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">Home</a>
+    <a href="shop.html" class="nav-item active">Shop</a>
+    <a href="https://www.facebook.com/groups/1356571664762620/" class="nav-item">Groups</a>
+  </nav>
+
+</body>
+</html>

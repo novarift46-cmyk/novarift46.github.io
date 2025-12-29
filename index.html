@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Novarift's Service</title>
+
+<style>
+:root{
+  --bg:#0b0f14;
+  --panel:#121824;
+  --card:#151d2e;
+  --accent:#22c55e;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",system-ui,sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#0b0f14,#0e1320);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:18px;
+  font-weight:700;
+  letter-spacing:2px;
+  font-size:22px;
+  color:var(--accent);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+  padding:16px;
+}
+
+/* CARD */
+.card{
+  background:linear-gradient(180deg,#151d2e,#101726);
+  border-radius:18px;
+  padding:12px;
+  border:1px solid #1f2937;
+}
+
+/* IMAGE FIX */
+.card img{
+  width:100%;
+  height:300px;        
+  object-fit:cover;
+  border-radius:14px;
+  display:block;
+}
+
+/* TEXT */
+.card h4{
+  margin-top:8px;
+  font-size:14px;
+}
+
+.price{
+  margin-top:6px;
+  color:var(--accent);
+  font-weight:700;
+}
+
+/* PROFILE */
+.profile{
+  margin:20px 16px;
+  background:var(--panel);
+  border-radius:20px;
+  padding:18px;
+  border:1px solid #1f2937;
+  text-align:center;
+}
+.badge{
+  color:var(--accent);
+  font-size:13px;
+  font-weight:600;
+}
+
+.profile-actions{
+  display:flex;
+  gap:12px;
+  margin-top:14px;
+}
+.btn{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  background:var(--card);
+  color:white;
+  text-align:center;
+  text-decoration:none;
+}
+.btn.main{
+  background:var(--accent);
+  color:black;
+}
+
+/* ADMINS */
+.admins{padding:0 16px;}
+.admin-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.admin{
+  background:var(--card);
+  border-radius:16px;
+  padding:14px;
+  text-align:center;
+  border:1px solid #1f2937;
+}
+.admin img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  border:3px solid var(--accent);
+  margin-bottom:8px;
+}
+.role{
+  color:var(--accent);
+  font-size:12px;
+  font-weight:600;
+}
+
+/* FEES */
+.fees{
+  margin:16px;
+  background:var(--panel);
+  border-radius:18px;
+  padding:16px;
+  border:1px solid #1f2937;
+}
+.fee{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px dashed #1f2937;
+}
+.fee:last-child{border:none;}
+.free{color:var(--accent);}
+
+/* WARNING */
+.warning{
+  margin:16px;
+  background:#2a1115;
+  border-left:4px solid #ef4444;
+  padding:14px;
+  border-radius:14px;
+  color:#fecaca;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#0b0f14;
+  border-top:1px solid #1f2937;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+}
+nav a{
+  color:var(--muted);
+  font-size:12px;
+  text-decoration:none;
+}
+nav .active{
+  color:var(--accent);
+  font-weight:600;
+}
+
+.spacer{height:90px;}
+</style>
+</head>
+
+<body>
+
+<header>Novarift's Service</header>
+
+<!-- CARDS GRID -->
+<div class="grid">
+
+  <div class="card">
+    <img src="henbe.jpg">
+    <h4></h4>
+    <div class="price"></div>
+  </div>
+
+  <div class="card">
+    <img src="midman yu hid (1).jpg">
+    <h4></h4>
+    <div class="price"></div>
+  </div>
+
+  <div class="card">
+    <img src="zuwl.jpg">
+    <h4></h4>
+    <div class="price"></div>
+  </div>
+
+</div>
+
+<div class="profile">
+  <h2>Novarift's Service</h2>
+  <div class="badge">Verified Seller</div>
+
+  <div class="profile-actions">
+    <a href="https://www.facebook.com/profile.php?id=61583869546402" class="btn main">Page</a>
+    <a href="https://www.messenger.com/t/9232728800189414/" class="btn">Group Chat</a>
+  </div>
+</div>
+
+<div class="admins">
+  <h3>Admins</h3>
+
+  <div class="admin-list">
+
+    <a href="https://www.facebook.com/fxel.neo#" target="_blank" class="admin-link">
+      <div class="admin">
+        <img src="nomi.jpg">
+        <div>Nomi Kunn</div>
+        <div class="role">Admin</div>
+      </div>
+    </a>
+
+    <a href="https://www.facebook.com/boldoo.ecest.gsg.lg.j.gunigtajert.nc#" target="_blank" class="admin-link">
+      <div class="admin">
+        <img src="cosmic.jpg">
+        <div>Cosmic Garou</div>
+        <div class="role">Admin</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+<div class="fees">
+  <div class="fee"><span>Midman</span><span>5,000₮</span></div>
+  <div class="fee"><span>High Tier</span><span>1%</span></div>
+  <div class="fee"><span>Account Fee</span><span>5%</span></div>
+  <div class="fee"><span>Verification</span><span class="free">FREE</span></div>
+</div>
+
+<div class="warning">
+⚠️ Only trade using official admin links.
+</div>
+
+<div class="spacer"></div>
+
+<nav>
+  <a class="active" href="#">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="https://www.facebook.com/groups/1356571664762620/?ref=share_group_link&rdid=Vv8QvrSgc3kujjU7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1XAeU7dSVm%2F#">Groups</a>
+</nav>
+
+</body>
+</html>

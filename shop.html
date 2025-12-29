@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novarift's Service</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f2f2f2;
+    }
+
+    header.title {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .info {
+      padding: 15px;
+    }
+
+    .info h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .info .price {
+      color: #4CAF50;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .bottom-nav a, .bottom-nav button {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .bottom-nav .active {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="title">
+    Novarift's Service
+  </header>
+
+  <main>
+    <div class="card hot" onclick="location.href='acc1.html'">
+      <img src="acc (1).jpg" alt="Account 1">
+      <div class="info">
+        <h3>Account 1</h3>
+        <p class="price">500,000₮</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='acc2.html'">
+      <img src="acc (2).jpg" alt="Account 2">
+      <div class="info">
+        <h3>Account 2</h3>
+        <p class="price">600,000₮</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='acc3.html'">
+      <img src="acc3.jpg" alt="Account 3">
+      <div class="info">
+        <h3>Account 3</h3>
+        <p class="price">150,000₮</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">Home</a>
+    <button class="nav-button active">Shop</button>
+    <a href="https://www.facebook.com/groups/1356571664762620/?ref=share_group_link&rdid=Vv8QvrSgc3kujjU7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1XAeU7dSVm%2F#" class="nav-item">Groups</a>
+  </nav>
+
+</body>
+</html>
