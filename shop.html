@@ -1,139 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Novarift's Service</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novarift's Service</title>
 
-    body {
-      background-color: #070013;
-    }
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',Arial,sans-serif;
+}
 
-    header.title {
-      background-color: #4CAF50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 24px;
-    }
+/* BODY */
+body{
+  background: radial-gradient(circle at top, #12002a, #070013);
+  color:#fff;
+  padding-bottom:90px;
+}
 
-    main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px;
-    }
+/* MAIN GRID */
+main{
+  max-width:1000px;
+  margin:auto;
+  padding:16px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr); /* ALWAYS 2 PER ROW */
+  gap:16px;
+}
 
-    .card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 250px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-align: center;
-    }
+/* CARD */
+.card{
+  background:linear-gradient(180deg,#ffffff,#f2f2f2);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  transition:.25s ease;
+  position:relative;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
+/* HOT TAG */
+.card.hot::before{
+  content:"HOT";
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:linear-gradient(135deg,#ff3d3d,#ff9800);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:5px 10px;
+  border-radius:20px;
+  z-index:2;
+}
 
-    .info {
-      padding: 15px;
-    }
+/* IMAGE */
+.card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+}
 
-    .info h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: #333;
-    }
+/* INFO */
+.info{
+  padding:12px;
+  text-align:center;
+}
 
-    .info .price {
-      color: #4CAF50;
-      font-weight: bold;
-      font-size: 18px;
-    }
+.info h3{
+  font-size:16px;
+  color:#222;
+  margin-bottom:6px;
+  font-weight:700;
+}
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      background-color: #000000;
-      border-top: 1px solid #ccc;
-      padding: 10px 0;
-    }
+.info .price{
+  font-size:17px;
+  font-weight:800;
+  color:#2e8b57;
+}
 
-    .bottom-nav a, .bottom-nav button {
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(8px);
+  display:flex;
+  justify-content:space-around;
+  padding:14px 0;
+  border-top:1px solid rgba(255,255,255,.1);
+}
 
-    .bottom-nav .active {
-      color: #4CAF50;
-      font-weight: bold;
-    }
-  </style>
+.bottom-nav a,
+.bottom-nav button{
+  color:#aaa;
+  font-size:15px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.bottom-nav a:hover,
+.bottom-nav button:hover{
+  color:#4CAF50;
+}
+
+.bottom-nav .active{
+  color:#4CAF50;
+  font-weight:700;
+}
+</style>
 </head>
+
 <body>
 
-  <header class="title">
-    Novarift's Service
-  </header>
-
-  <main>
-    <div class="card hot" onclick="location.href='acc1.html'">
-      <img src="acc (1).jpg" alt="Account 1">
-      <div class="info">
-        <h3>Account 1</h3>
-        <p class="price">500,000₮</p>
-      </div>
+<main>
+  <div class="card hot" onclick="location.href='acc1.html'">
+    <img src="acc (1).jpg" alt="Account 1">
+    <div class="info">
+      <h3>Account 1</h3>
+      <p class="price">500,000₮</p>
     </div>
+  </div>
 
-    <div class="card" onclick="location.href='acc2.html'">
-      <img src="acc (2).jpg" alt="Account 2">
-      <div class="info">
-        <h3>Account 2</h3>
-        <p class="price">600,000₮</p>
-      </div>
+  <div class="card" onclick="location.href='acc2.html'">
+    <img src="acc (2).jpg" alt="Account 2">
+    <div class="info">
+      <h3>Account 2</h3>
+      <p class="price">600,000₮</p>
     </div>
+  </div>
 
-    <div class="card" onclick="location.href='acc3.html'">
-      <img src="acc3.jpg" alt="Account 3">
-      <div class="info">
-        <h3>Account 3</h3>
-        <p class="price">150,000₮</p>
-      </div>
+  <div class="card" onclick="location.href='acc3.html'">
+    <img src="acc3.jpg" alt="Account 3">
+    <div class="info">
+      <h3>Account 3</h3>
+      <p class="price">150,000₮</p>
     </div>
-  </main>
+  </div>
+</main>
 
-  <nav class="bottom-nav">
-    <a href="index.html" class="nav-item">Home</a>
-    <button class="nav-button active">Shop</button>
-    <a href="https://www.facebook.com/groups/1356571664762620/?ref=share_group_link&rdid=Vv8QvrSgc3kujjU7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1XAeU7dSVm%2F#" class="nav-item">Groups</a>
-  </nav>
+<nav class="bottom-nav">
+  <a href="index.html">Home</a>
+  <button class="active">Shop</button>
+  <a href="https://www.facebook.com/groups/1356571664762620/">Groups</a>
+</nav>
 
 </body>
 </html>

@@ -37,43 +37,6 @@ header{
   color:var(--accent);
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:16px;
-  padding:16px;
-}
-
-/* CARD */
-.card{
-  background:linear-gradient(180deg,#151d2e,#101726);
-  border-radius:18px;
-  padding:12px;
-  border:1px solid #1f2937;
-}
-
-/* IMAGE FIX */
-.card img{
-  width:100%;
-  height:300px;        
-  object-fit:cover;
-  border-radius:14px;
-  display:block;
-}
-
-/* TEXT */
-.card h4{
-  margin-top:8px;
-  font-size:14px;
-}
-
-.price{
-  margin-top:6px;
-  color:var(--accent);
-  font-weight:700;
-}
-
 /* PROFILE */
 .profile{
   margin:20px 16px;
@@ -152,6 +115,40 @@ header{
 .fee:last-child{border:none;}
 .free{color:var(--accent);}
 
+/* DESCRIPTION */
+.description{
+  margin:16px;
+  background:linear-gradient(180deg,#121824,#0f1524);
+  border-radius:18px;
+  padding:18px;
+  border:1px solid #1f2937;
+}
+
+.description h3{
+  color:var(--accent);
+  font-size:15px;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+.description p{
+  font-size:13px;
+  line-height:1.6;
+}
+
+.description p + p{
+  margin-top:10px;
+}
+
+.important{
+  color:#facc15;
+  font-weight:600;
+}
+.danger{
+  color:#f87171;
+  font-weight:600;
+}
+
 /* WARNING */
 .warning{
   margin:16px;
@@ -192,9 +189,6 @@ nav .active{
 
 <header>Novarift's Service</header>
 
-
-
-
 <div class="profile">
   <h2>Novarift's Service</h2>
   <div class="badge">Verified Seller</div>
@@ -209,8 +203,7 @@ nav .active{
   <h3>Admins</h3>
 
   <div class="admin-list">
-
-    <a href="https://www.facebook.com/fxel.neo#" target="_blank" class="admin-link">
+    <a href="https://www.facebook.com/fxel.neo#" target="_blank">
       <div class="admin">
         <img src="nomi.jpg">
         <div>Nomi Kunn</div>
@@ -218,23 +211,41 @@ nav .active{
       </div>
     </a>
 
-    <a href="https://www.facebook.com/boldoo.ecest.gsg.lg.j.gunigtajert.nc#" target="_blank" class="admin-link">
+    <a href="https://www.facebook.com/boldoo.ecest.gsg.lg.j.gunigtajert.nc#" target="_blank">
       <div class="admin">
         <img src="cosmic.jpg">
         <div>Cosmic Garou</div>
         <div class="role">Admin</div>
       </div>
     </a>
-
   </div>
 </div>
-
 
 <div class="fees">
   <div class="fee"><span>Midman</span><span>5,000₮</span></div>
   <div class="fee"><span>High Tier</span><span>1%</span></div>
   <div class="fee"><span>Account Fee</span><span>5%</span></div>
   <div class="fee"><span>Verification</span><span class="free">FREE</span></div>
+</div>
+
+<div class="description">
+  <h3>📌 Important Information</h3>
+
+  <p>
+    Shop оос өөрийнхөө таалагдсан аккаунт дээр дарж
+    <span class="important">админтай холбогдоно уу.</span>
+  </p>
+
+  <p>
+    Аккаунтын DESCRIPTION дээр
+    <span class="danger">“safeлэгүй”</span> гэж бичсэн байвал
+    манайх ямар ч <span class="danger">хариуцлага хүлээхгүй.</span>
+  </p>
+
+  <p>
+    Зарах эрхгүй, зарах боломжгүй аккаунт байвал
+    <span class="important">админтай холбогдоорой.</span> Баярлалаа.
+  </p>
 </div>
 
 <div class="warning">
@@ -246,7 +257,7 @@ nav .active{
 <nav>
   <a class="active" href="#">Home</a>
   <a href="shop.html">Shop</a>
-  <a href="https://www.facebook.com/groups/1356571664762620/?ref=share_group_link&rdid=Vv8QvrSgc3kujjU7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1XAeU7dSVm%2F#">Groups</a>
+  <a href="https://www.facebook.com/groups/1356571664762620/">Groups</a>
 </nav>
 
 </body>
