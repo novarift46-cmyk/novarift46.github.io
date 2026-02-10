@@ -185,21 +185,11 @@ header{
   color:var(--accent2);
 }
 
-/* Phone perfect center */
-@media (max-width:768px){
-  .admin-list{
-    justify-content:flex-start;
-    padding-left:20px;
-  }
-
-  .admin{
-    min-width:80%;
-  }
-  /* Make entire admin card clickable */
+/* Make admin link clickable */
 .admin-link {
-  text-decoration: none;   /* Remove underline */
-  color: inherit;          /* Keep text color */
-  display: inline-block;   /* Ensure block-level for hover effect */
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
   transition: transform .3s, box-shadow .3s;
 }
 
@@ -207,9 +197,6 @@ header{
   transform: translateY(-5px);
   box-shadow: 0 0 25px rgba(168,85,247,.5);
 }
-
-}
-
 
 /* FEES */
 .fee{
@@ -290,6 +277,73 @@ nav .active{
 .spacer{
   height:160px;
 }
+
+/* MOBILE OPTIMIZATION */
+@media (max-width:768px){
+  body {
+    padding:10px;
+  }
+
+  /* Admin list vertical scroll */
+  .admin-list {
+    flex-direction: column;
+    gap:14px;
+    padding-left:0;
+    overflow-x:visible;
+    align-items:center;
+  }
+
+  /* Admin card full width */
+  .admin {
+    min-width:90%;
+    max-width:350px;
+    flex-direction:row;
+    justify-content:flex-start;
+    padding:14px 18px;
+  }
+
+  /* Admin image slightly bigger */
+  .admin img {
+    width:56px;
+    height:56px;
+  }
+
+  /* Profile card adjustments */
+  .card {
+    margin:12px 10px;
+    padding:20px;
+  }
+
+  /* Profile actions stacked on mobile */
+  .actions {
+    flex-direction: column;
+    gap:12px;
+  }
+
+  .btn {
+    padding:14px 0;
+  }
+
+  /* Floating button smaller and closer */
+  .floating {
+    width:60px;
+    height:60px;
+    font-size:24px;
+    bottom:80px;
+    right:20px;
+  }
+
+  /* Navbar bigger buttons for touch */
+  nav {
+    width:95%;
+    max-width:none;
+    padding:12px 0;
+  }
+
+  nav a {
+    font-size:16px;
+  }
+}
 </style>
 </head>
 
@@ -315,40 +369,38 @@ nav .active{
 
   <div class="admin-list">
 
-    <a href="https://example.com/nomi" class="admin-link">
-  <div class="admin">
-    <img src="nomi.jpg" alt="Nomi">
-    <div>
-      <div>Nomi Kunn</div>
-      <div class="role">ADMIN</div>
-    </div>
-  </div>
-</a>
+    <a href="https://www.facebook.com/fxel.neo" class="admin-link">
+      <div class="admin">
+        <img src="nomi.jpg" alt="Nomi">
+        <div>
+          <div>Nomi Kunn</div>
+          <div class="role">ADMIN</div>
+        </div>
+      </div>
+    </a>
 
-<a href="https://example.com/dulgun" class="admin-link">
-  <div class="admin">
-    <img src="dulgun.jpg" alt="Dulgun">
-    <div>
-      <div>Dulgun</div>
-      <div class="role">ADMIN</div>
-    </div>
-  </div>
-</a>
+    <a href="https://www.facebook.com/dulguunpdf#" class="admin-link">
+      <div class="admin">
+        <img src="dulgun.jpg" alt="Dulgun">
+        <div>
+          <div>Dulguun Pdf</div>
+          <div class="role">ADMIN</div>
+        </div>
+      </div>
+    </a>
 
-<a href="https://example.com/enkhuish" class="admin-link">
-  <div class="admin">
-    <img src="enkhuish.jpg" alt="Enkhuish">
-    <div>
-      <div>Enkhuish Lnn</div>
-      <div class="role">ADMIN</div>
-    </div>
-  </div>
-</a>
+    <a href="https://www.facebook.com/munkhbayar.enkhkhuslen" class="admin-link">
+      <div class="admin">
+        <img src="enkhuish.jpg" alt="Enkhuish">
+        <div>
+          <div>Enkhuish Lnn</div>
+          <div class="role">ADMIN</div>
+        </div>
+      </div>
+    </a>
 
   </div>
 </div>
-
-
 
 <!-- FEES -->
 <div class="card">
