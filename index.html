@@ -7,14 +7,16 @@
 
 <style>
 :root{
-  --bg:#0b0f14;
-  --panel:#121826;
-  --card:#161f33;
-  --accent:#22c55e;
-  --accent-soft:#1ea356;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
-  --danger:#ef4444;
+  --bg:#070a14;
+  --panel:#0f1424;
+  --card:#141a30;
+
+  --accent:#a855f7;      /* purple */
+  --accent2:#ff2fd1;     /* pink */
+  --accent-glow:#22f0ff; /* cyan glow */
+
+  --text:#e6e6ff;
+  --muted:#8b90b5;
 }
 
 *{
@@ -25,228 +27,268 @@
 }
 
 body{
-  background:radial-gradient(circle at top,#121a2e,#0b0f14);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(168,85,247,.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,47,209,.12), transparent 40%),
+    var(--bg);
   color:var(--text);
 }
 
 /* HEADER */
 header{
-  padding:22px;
-  text-align:center;
-  font-size:24px;
+  position:sticky;
+  top:0;
+  background:rgba(7,10,20,.8);
+  backdrop-filter:blur(12px);
+  padding:20px;
+  font-size:22px;
   font-weight:800;
-  letter-spacing:2px;
-  color:var(--accent);
+  letter-spacing:1px;
+  border-bottom:1px solid #1c2240;
+  text-align:center;
+  text-shadow:0 0 15px rgba(168,85,247,.6);
+}
+
+/* CARD */
+.card{
+  background:linear-gradient(180deg,#0f1424,#0b0f1f);
+  margin:20px;
+  padding:24px;
+  border-radius:28px;
+  border:1px solid #1c2240;
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.03);
+  animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* PROFILE */
-.profile{
-  margin:16px;
-  background:linear-gradient(180deg,#141d33,#0f1629);
-  border-radius:22px;
-  padding:22px;
-  border:1px solid #1f2a44;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-}
-
-.profile h2{
-  font-size:20px;
-}
-
 .badge{
-  margin-top:6px;
   display:inline-block;
-  padding:4px 10px;
+  padding:6px 14px;
   border-radius:999px;
   font-size:12px;
   font-weight:700;
-  background:rgba(34,197,94,.15);
-  color:var(--accent);
+  background:rgba(34,240,255,.1);
+  color:var(--accent-glow);
+  margin-bottom:12px;
+  text-shadow:0 0 10px rgba(34,240,255,.6);
 }
 
-.profile-actions{
+.profile-title{
+  font-size:26px;
+  font-weight:900;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:14px;
+  margin:10px 0 22px;
+}
+
+/* BUTTONS */
+.actions{
   display:flex;
-  gap:12px;
-  margin-top:18px;
+  gap:16px;
 }
 
 .btn{
   flex:1;
-  padding:13px;
-  border-radius:16px;
-  background:var(--card);
-  color:white;
+  padding:16px;
+  border-radius:20px;
+  text-align:center;
   text-decoration:none;
-  font-weight:600;
-  transition:.2s ease;
-  border:1px solid #1f2a44;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  background:#1b2745;
+  font-weight:700;
+  transition:.3s;
 }
 
 .btn.main{
-  background:linear-gradient(180deg,var(--accent),var(--accent-soft));
-  color:#02110a;
-  border:none;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  box-shadow:0 0 20px rgba(168,85,247,.4);
 }
 
 .btn.main:hover{
-  filter:brightness(1.05);
+  transform:translateY(-4px);
+  box-shadow:0 0 30px rgba(255,47,209,.7);
+}
+
+.btn.secondary{
+  background:var(--card);
+  border:1px solid #1c2240;
+  color:var(--text);
+}
+
+.btn.secondary:hover{
+  border-color:var(--accent-glow);
+  box-shadow:0 0 15px rgba(34,240,255,.5);
+}
+
+/* SECTION TITLE */
+.section-title{
+  font-weight:800;
+  margin-bottom:18px;
+  color:var(--accent-glow);
+  text-shadow:0 0 12px rgba(34,240,255,.6);
 }
 
 /* ADMINS */
-.admins{
-  margin:20px 16px 0;
-}
-
-.admins h3{
-  margin-bottom:10px;
-  font-size:16px;
-  color:var(--accent);
-}
-
 .admin-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:14px;
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:10px;
 }
 
-.admin-list a{
-  text-decoration:none;
-  color:inherit;
+.admin-list::-webkit-scrollbar{
+  display:none;
 }
 
 .admin{
+  min-width:220px;
   background:var(--card);
-  border-radius:18px;
-  padding:16px;
-  text-align:center;
-  border:1px solid #1f2a44;
-  transition:.2s ease;
+  padding:14px 20px;
+  border-radius:50px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border:1px solid #1c2240;
+  transition:.3s;
+  scroll-snap-align:center;
 }
 
 .admin:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  transform:translateY(-5px);
+  box-shadow:0 0 25px rgba(168,85,247,.5);
 }
 
 .admin img{
-  width:70px;
-  height:70px;
+  width:48px;
+  height:48px;
   border-radius:50%;
-  border:3px solid var(--accent);
-  margin-bottom:10px;
+  border:2px solid var(--accent);
 }
 
 .role{
-  margin-top:4px;
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
-  color:var(--accent);
+  color:var(--accent2);
 }
+
+/* Phone perfect center */
+@media (max-width:768px){
+  .admin-list{
+    justify-content:flex-start;
+    padding-left:20px;
+  }
+
+  .admin{
+    min-width:80%;
+  }
+  /* Make entire admin card clickable */
+.admin-link {
+  text-decoration: none;   /* Remove underline */
+  color: inherit;          /* Keep text color */
+  display: inline-block;   /* Ensure block-level for hover effect */
+  transition: transform .3s, box-shadow .3s;
+}
+
+.admin-link:hover .admin {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(168,85,247,.5);
+}
+
+}
+
 
 /* FEES */
-.fees{
-  margin:18px 16px;
-  background:var(--panel);
-  border-radius:20px;
-  padding:18px;
-  border:1px solid #1f2a44;
-}
-
 .fee{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:10px 0;
-  font-size:14px;
+  padding:18px 0;
+  font-size:15px;
 }
 
 .fee + .fee{
-  border-top:1px dashed #1f2a44;
+  border-top:1px solid #1c2240;
 }
 
-.free{
-  color:var(--accent);
-  font-weight:700;
+.fee span:last-child{
+  font-weight:800;
+  color:var(--accent-glow);
 }
 
-/* DESCRIPTION */
-.description{
-  margin:16px;
-  background:linear-gradient(180deg,#141d33,#0f1629);
-  border-radius:20px;
-  padding:20px;
-  border:1px solid #1f2a44;
+/* FLOATING BUTTON */
+.floating{
+  position:fixed;
+  bottom:110px;
+  right:25px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 0 25px rgba(168,85,247,.6);
+  animation:pulse 2.5s infinite;
 }
 
-.description h3{
-  font-size:15px;
-  margin-bottom:12px;
-  color:var(--accent);
-}
-
-.description p{
-  font-size:13px;
-  line-height:1.7;
-}
-
-.description p + p{
-  margin-top:12px;
-}
-
-.important{
-  color:#facc15;
-  font-weight:700;
-}
-
-.danger{
-  color:#f87171;
-  font-weight:700;
-}
-
-/* WARNING */
-.warning{
-  margin:16px;
-  background:rgba(239,68,68,.12);
-  border-left:4px solid var(--danger);
-  padding:14px;
-  border-radius:14px;
-  font-size:13px;
-  color:#fecaca;
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(168,85,247,.7);}
+  70%{box-shadow:0 0 0 20px rgba(168,85,247,0);}
+  100%{box-shadow:0 0 0 0 rgba(168,85,247,0);}
 }
 
 /* NAV */
 nav{
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#0b0f14;
-  border-top:1px solid #1f2a44;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:420px;
+  background:#0f1424;
+  border-radius:40px;
+  padding:16px 0;
   display:flex;
   justify-content:space-around;
-  padding:10px 0;
-  backdrop-filter:blur(10px);
+  box-shadow:0 10px 40px rgba(0,0,0,.8);
+  border:1px solid #1c2240;
 }
 
 nav a{
-  color:var(--muted);
-  font-size:12px;
   text-decoration:none;
-  font-weight:600;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:var(--accent-glow);
 }
 
 nav .active{
-  color:var(--accent);
+  color:var(--accent-glow);
+  text-shadow:0 0 10px rgba(34,240,255,.6);
 }
 
 .spacer{
-  height:90px;
+  height:160px;
 }
 </style>
 </head>
@@ -255,60 +297,75 @@ nav .active{
 
 <header>Novarift's Service</header>
 
-<div class="profile">
-  <h2>Novarift's Service</h2>
+<!-- PROFILE -->
+<div class="card">
   <div class="badge">Verified Seller</div>
+  <div class="profile-title">Novarift's Service</div>
+  <div class="subtitle">Дижитал тоглоомын аккаунт худалдаа</div>
 
-  <div class="profile-actions">
+  <div class="actions">
     <a href="https://www.facebook.com/profile.php?id=61583869546402" class="btn main">Page</a>
-    <a href="https://www.messenger.com/t/9232728800189414/" class="btn">Group Chat</a>
+    <a href="https://www.messenger.com/t/9232728800189414/" class="btn secondary">Group</a>
   </div>
 </div>
 
-<div class="admins">
-  <h3></h3>
+<!-- ADMINS -->
+<div class="card">
+  <div class="section-title">Админууд</div>
 
   <div class="admin-list">
-    <a href="https://www.facebook.com/fxel.neo#" target="_blank">
-      <div class="admin">
-        <img src="nomi.jpg" alt="Admin">
-        <div>Nomi Kunn</div>
-        <div class="role">Admin</div>
-      </div>
-    </a>
+
+    <a href="https://example.com/nomi" class="admin-link">
+  <div class="admin">
+    <img src="nomi.jpg" alt="Nomi">
+    <div>
+      <div>Nomi Kunn</div>
+      <div class="role">ADMIN</div>
+    </div>
+  </div>
+</a>
+
+<a href="https://example.com/dulgun" class="admin-link">
+  <div class="admin">
+    <img src="dulgun.jpg" alt="Dulgun">
+    <div>
+      <div>Dulgun</div>
+      <div class="role">ADMIN</div>
+    </div>
+  </div>
+</a>
+
+<a href="https://example.com/enkhuish" class="admin-link">
+  <div class="admin">
+    <img src="enkhuish.jpg" alt="Enkhuish">
+    <div>
+      <div>Enkhuish Lnn</div>
+      <div class="role">ADMIN</div>
+    </div>
+  </div>
+</a>
+
   </div>
 </div>
 
-<div class="fees">
-  <div class="fee"><span>Midman</span><span>5,000₮</span></div>
-  <div class="fee"><span>High Tier</span><span>1%</span></div>
-  <div class="fee"><span>Account Fee</span><span>5%</span></div>
-  <div class="fee"><span>Verification</span><span class="free">FREE</span></div>
+
+
+<!-- FEES -->
+<div class="card">
+  <div class="section-title">Үнийн мэдээлэл</div>
+
+  <div class="fee">
+    <span>Midman үйлчилгээ</span>
+    <span>5,000₮</span>
+  </div>
+
+  <div class="fee">
+    <span>Account Заруулах</span>
+    <span>5%</span>
+  </div>
 </div>
 
-<div class="description">
-  <h3>📌 Important Information</h3>
-
-  <p>
-    Shop оос өөрийнхөө таалагдсан аккаунт дээр дарж
-    <span class="important">админтай холбогдоно уу.</span>
-  </p>
-
-  <p>
-    Аккаунтын DESCRIPTION дээр
-    <span class="danger">“safeлэгүй”</span> гэж бичсэн байвал
-    манайх ямар ч <span class="danger">хариуцлага хүлээхгүй.</span>
-  </p>
-
-  <p>
-    Зарах эрхгүй аккаунт байвал
-    <span class="important">админтай холбогдоорой.</span> Баярлалаа.
-  </p>
-</div>
-
-<div class="warning">
-⚠️ Only trade using official admin links.
-</div>
+<a href="https://www.messenger.com/t/9232728800189414/" class="floating">💬</a>
 
 <div class="spacer"></div>
 
