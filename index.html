@@ -1,57 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MURIA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Novarift's Service</title>
 
 <style>
+:root{
+  --bg:#0b0f14;
+  --panel:#121826;
+  --card:#161f33;
+  --accent:#22c55e;
+  --accent-soft:#1ea356;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --danger:#ef4444;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",system-ui,sans-serif;
+}
+
 body{
-  background:#111827;
+  background:radial-gradient(circle at top,#121a2e,#0b0f14);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  padding:22px;
+  text-align:center;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:var(--accent);
+}
+
+/* PROFILE */
+.profile{
+  margin:16px;
+  background:linear-gradient(180deg,#141d33,#0f1629);
+  border-radius:22px;
+  padding:22px;
+  border:1px solid #1f2a44;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.profile h2{
+  font-size:20px;
+}
+
+.badge{
+  margin-top:6px;
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  background:rgba(34,197,94,.15);
+  color:var(--accent);
+}
+
+.profile-actions{
   display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:Arial, sans-serif;
+  gap:12px;
+  margin-top:18px;
+}
+
+.btn{
+  flex:1;
+  padding:13px;
+  border-radius:16px;
+  background:var(--card);
   color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s ease;
+  border:1px solid #1f2a44;
 }
 
-.profile-box{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  background:#1f2937;
-  padding:15px 20px;
-  border-radius:12px;
+.btn:hover{
+  transform:translateY(-2px);
+  background:#1b2745;
 }
 
-.profile-box img{
-  width:80px;
-  height:80px;
+.btn.main{
+  background:linear-gradient(180deg,var(--accent),var(--accent-soft));
+  color:#02110a;
+  border:none;
+}
+
+.btn.main:hover{
+  filter:brightness(1.05);
+}
+
+/* ADMINS */
+.admins{
+  margin:20px 16px 0;
+}
+
+.admins h3{
+  margin-bottom:10px;
+  font-size:16px;
+  color:var(--accent);
+}
+
+.admin-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;
+}
+
+.admin-list a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.admin{
+  background:var(--card);
+  border-radius:18px;
+  padding:16px;
+  text-align:center;
+  border:1px solid #1f2a44;
+  transition:.2s ease;
+}
+
+.admin:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.admin img{
+  width:70px;
+  height:70px;
   border-radius:50%;
-  object-fit:cover;
-  cursor:pointer;
-  transition:0.3s;
+  border:3px solid var(--accent);
+  margin-bottom:10px;
 }
 
-.profile-box img:hover{
-  transform:scale(1.1);
+.role{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--accent);
+}
+
+/* FEES */
+.fees{
+  margin:18px 16px;
+  background:var(--panel);
+  border-radius:20px;
+  padding:18px;
+  border:1px solid #1f2a44;
+}
+
+.fee{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  font-size:14px;
+}
+
+.fee + .fee{
+  border-top:1px dashed #1f2a44;
+}
+
+.free{
+  color:var(--accent);
+  font-weight:700;
+}
+
+/* DESCRIPTION */
+.description{
+  margin:16px;
+  background:linear-gradient(180deg,#141d33,#0f1629);
+  border-radius:20px;
+  padding:20px;
+  border:1px solid #1f2a44;
+}
+
+.description h3{
+  font-size:15px;
+  margin-bottom:12px;
+  color:var(--accent);
+}
+
+.description p{
+  font-size:13px;
+  line-height:1.7;
+}
+
+.description p + p{
+  margin-top:12px;
+}
+
+.important{
+  color:#facc15;
+  font-weight:700;
+}
+
+.danger{
+  color:#f87171;
+  font-weight:700;
+}
+
+/* WARNING */
+.warning{
+  margin:16px;
+  background:rgba(239,68,68,.12);
+  border-left:4px solid var(--danger);
+  padding:14px;
+  border-radius:14px;
+  font-size:13px;
+  color:#fecaca;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#0b0f14;
+  border-top:1px solid #1f2a44;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  backdrop-filter:blur(10px);
+}
+
+nav a{
+  color:var(--muted);
+  font-size:12px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+nav .active{
+  color:var(--accent);
+}
+
+.spacer{
+  height:90px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="profile-box">
-  <a href="https://www.facebook.com/fxel.neo#" target="_blank">
-    <img src="nomi.jpg" alt="Profile">
-  </a>
-  
-  <div>
-    <h3>NOMI</h3>
-    <p></p>
+<header>Novarift's Service</header>
+
+<div class="profile">
+  <h2>Novarift's Service</h2>
+  <div class="badge">Verified Seller</div>
+
+  <div class="profile-actions">
+    <a href="https://www.facebook.com/profile.php?id=61583869546402" class="btn main">Page</a>
+    <a href="https://www.messenger.com/t/9232728800189414/" class="btn">Group Chat</a>
   </div>
 </div>
+
+<div class="admins">
+  <h3></h3>
+
+  <div class="admin-list">
+    <a href="https://www.facebook.com/fxel.neo#" target="_blank">
+      <div class="admin">
+        <img src="nomi.jpg" alt="Admin">
+        <div>Nomi Kunn</div>
+        <div class="role">Admin</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="fees">
+  <div class="fee"><span>Midman</span><span>5,000₮</span></div>
+  <div class="fee"><span>High Tier</span><span>1%</span></div>
+  <div class="fee"><span>Account Fee</span><span>5%</span></div>
+  <div class="fee"><span>Verification</span><span class="free">FREE</span></div>
+</div>
+
+<div class="description">
+  <h3>📌 Important Information</h3>
+
+  <p>
+    Shop оос өөрийнхөө таалагдсан аккаунт дээр дарж
+    <span class="important">админтай холбогдоно уу.</span>
+  </p>
+
+  <p>
+    Аккаунтын DESCRIPTION дээр
+    <span class="danger">“safeлэгүй”</span> гэж бичсэн байвал
+    манайх ямар ч <span class="danger">хариуцлага хүлээхгүй.</span>
+  </p>
+
+  <p>
+    Зарах эрхгүй аккаунт байвал
+    <span class="important">админтай холбогдоорой.</span> Баярлалаа.
+  </p>
+</div>
+
+<div class="warning">
+⚠️ Only trade using official admin links.
+</div>
+
+<div class="spacer"></div>
+
+<nav>
+  <a class="active" href="#">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="https://www.facebook.com/groups/1356571664762620/">Groups</a>
+</nav>
 
 </body>
 </html>
