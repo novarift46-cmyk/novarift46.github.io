@@ -7,23 +7,28 @@
 
 <style>
 :root{
-  --bg:#0b0f14;
-  --card:#161f33;
-  --accent:#22c55e;
-  --accent-soft:#16a34a;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
+  --bg:#070a14;
+  --card:#141a30;
+  --accent:#a855f7;
+  --accent2:#ff2fd1;
+  --accent-glow:#22f0ff;
+  --text:#e6e6ff;
+  --muted:#8b90b5;
 }
 
+/* RESET */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Segoe UI, sans-serif;
+  font-family:"Segoe UI",system-ui,sans-serif;
 }
 
 body{
-  background:radial-gradient(circle at top,#16213a,#0b0f14);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(168,85,247,.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,47,209,.12), transparent 40%),
+    var(--bg);
   color:var(--text);
   padding-bottom:90px;
 }
@@ -34,9 +39,10 @@ header{
   padding:25px;
   font-size:26px;
   font-weight:900;
-  background:linear-gradient(90deg,var(--accent),#4ade80);
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;
   color:transparent;
+  text-shadow:0 0 15px rgba(168,85,247,.5);
 }
 
 /* SEARCH */
@@ -49,38 +55,42 @@ header{
   padding:14px;
   border-radius:14px;
   border:none;
-  background:#1e293b;
+  background:var(--card);
   color:white;
   font-size:14px;
   outline:none;
+  border:1px solid #1c2240;
 }
 
-/* GRID (mobile дээр 2 багана) */
+/* GRID */
 .grid{
   padding:15px;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
   gap:15px;
 }
 
 /* CARD */
 .card{
-  background:var(--card);
-  border-radius:16px;
+  background:linear-gradient(180deg,#0f1424,#0b0f1f);
+  border-radius:20px;
   overflow:hidden;
   cursor:pointer;
   transition:.3s;
-  border:1px solid #1f2a44;
+  border:1px solid #1c2240;
+  box-shadow:0 5px 20px rgba(0,0,0,.5);
 }
 
 .card:hover{
   transform:translateY(-5px);
+  box-shadow:0 0 25px rgba(168,85,247,.5);
 }
 
 .card img{
   width:100%;
   height:140px;
   object-fit:cover;
+  border-bottom:1px solid #1c2240;
 }
 
 .info{
@@ -95,7 +105,7 @@ header{
 
 .price{
   font-weight:800;
-  color:var(--accent);
+  color:var(--accent-glow);
 }
 
 /* HOT TAG */
@@ -108,7 +118,7 @@ header{
   position:absolute;
   top:8px;
   left:8px;
-  background:linear-gradient(135deg,#ff3d3d,#ff9800);
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
   color:#fff;
   font-size:10px;
   font-weight:700;
@@ -116,27 +126,121 @@ header{
   border-radius:20px;
 }
 
-/* NAV */
+/* NAVBAR */
 nav{
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#0b0f14;
-  border-top:1px solid #1f2a44;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:420px;
+  background:#0f1424;
+  border-radius:40px;
+  padding:16px 0;
   display:flex;
   justify-content:space-around;
-  padding:14px 0;
+  box-shadow:0 10px 40px rgba(0,0,0,.8);
+  border:1px solid #1c2240;
 }
 
 nav a{
   text-decoration:none;
   color:var(--muted);
-  font-weight:600;
+  font-size:14px;
+  font-weight:700;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:var(--accent-glow);
 }
 
 nav .active{
-  color:var(--accent);
+  color:var(--accent-glow);
+  text-shadow:0 0 10px rgba(34,240,255,.6);
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+  padding:15px;
+}
+
+.modal-content{
+  background:var(--card);
+  border-radius:20px;
+  max-width:400px;
+  width:100%;
+  padding:20px;
+  text-align:center;
+  position:relative;
+}
+
+.modal-content img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.modal-content h3{
+  margin-bottom:10px;
+}
+
+.modal-content .price{
+  margin-bottom:15px;
+}
+
+.modal-content .description{
+  margin-bottom:15px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* BUY NOW BUTTON */
+.buy-btn{
+  display:inline-block;
+  padding:12px 25px;
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.buy-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(255,47,209,.7);
+}
+
+.close-btn{
+  position:absolute;
+  top:10px;
+  right:12px;
+  font-size:20px;
+  cursor:pointer;
+  color:var(--accent-glow);
+}
+
+/* MOBILE GRID */
+@media (max-width:768px){
+  .grid{
+    grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  }
+
+  header{
+    font-size:22px;
+    padding:20px;
+  }
 }
 </style>
 </head>
@@ -149,35 +253,20 @@ nav .active{
   <input type="text" id="searchInput" placeholder="Search account...">
 </div>
 
-<div class="grid">
+<div class="grid" id="grid">
+  <!-- Cards injected by JS -->
+</div>
 
-  <!-- ACCOUNT 1 -->
-  <div class="card hot" onclick="location.href='acc1.html'">
-    <img src="acc (1).jpg">
-    <div class="info">
-      <h3>Account 1</h3>
-      <div class="price">500,000₮</div>
-    </div>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImage" src="">
+    <h3 id="modalTitle"></h3>
+    <div class="price" id="modalPrice"></div>
+    <div class="description" id="modalDesc"></div>
+    <a href="https://www.facebook.com/profile.php?id=61583869546402" target="_blank" class="buy-btn">Buy Now</a>
   </div>
-
-  <!-- ACCOUNT 2 -->
-  <div class="card" onclick="location.href='acc2.html'">
-    <img src="acc (2).jpg">
-    <div class="info">
-      <h3>Account 2</h3>
-      <div class="price">600,000₮</div>
-    </div>
-  </div>
-
-  <!-- ACCOUNT 3 -->
-  <div class="card" onclick="location.href='acc3.html'">
-    <img src="acc3.jpg">
-    <div class="info">
-      <h3>Account 3</h3>
-      <div class="price">150,000₮</div>
-    </div>
-  </div>
-
 </div>
 
 <nav>
@@ -187,20 +276,74 @@ nav .active{
 </nav>
 
 <script>
-const searchInput = document.getElementById("searchInput");
-const cards = document.querySelectorAll(".card");
+// Account data
+const accounts = [
+  {
+    name:"Account 1",
+    price:"500,000₮",
+    img:"acc (1).jpg",
+    hot:true,
+    desc:"This is a high-level account with rare items."
+  },
+  {
+    name:"Account 2",
+    price:"600,000₮",
+    img:"acc (2).jpg",
+    hot:false,
+    desc:"Mid-tier account, good for starting players."
+  },
+  {
+    name:"Account 3",
+    price:"150,000₮",
+    img:"acc3.jpg",
+    hot:false,
+    desc:"Beginner account, affordable price."
+  }
+];
 
-searchInput.addEventListener("keyup", function(){
-  let value = this.value.toLowerCase();
+// Generate cards dynamically
+const grid = document.getElementById("grid");
 
-  cards.forEach(card=>{
-    let text = card.innerText.toLowerCase();
-    if(text.includes(value)){
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
+accounts.forEach(acc=>{
+  const card = document.createElement("div");
+  card.className = "card" + (acc.hot ? " hot" : "");
+  card.innerHTML = `
+    <img src="${acc.img}">
+    <div class="info">
+      <h3>${acc.name}</h3>
+      <div class="price">${acc.price}</div>
+    </div>
+  `;
+  card.addEventListener("click", ()=>{
+    document.getElementById("modalImage").src = acc.img;
+    document.getElementById("modalTitle").innerText = acc.name;
+    document.getElementById("modalPrice").innerText = acc.price;
+    document.getElementById("modalDesc").innerText = acc.desc;
+    document.getElementById("modal").style.display = "flex";
   });
+  grid.appendChild(card);
+});
+
+// Search function
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("keyup", function(){
+  const value = this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(value) ? "block" : "none";
+  });
+});
+
+// Close modal
+document.getElementById("closeModal").addEventListener("click", ()=>{
+  document.getElementById("modal").style.display = "none";
+});
+
+// Close modal on click outside content
+document.getElementById("modal").addEventListener("click", e=>{
+  if(e.target === document.getElementById("modal")){
+    document.getElementById("modal").style.display = "none";
+  }
 });
 </script>
 
