@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Marketplace - Novarift</title>
 
 <style>
@@ -16,12 +16,11 @@
   --muted:#8b90b5;
 }
 
-/* RESET */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:"Segoe UI",system-ui,sans-serif;
+  font-family:"Segoe UI", system-ui, sans-serif;
 }
 
 body{
@@ -45,29 +44,37 @@ header{
   text-shadow:0 0 15px rgba(168,85,247,.5);
 }
 
-/* SEARCH */
-.search-container{
-  padding:0 15px 15px;
+/* MENU / ЦЭС */
+.menu{
+  display:flex;
+  gap:12px;
+  padding:0 15px 15px 15px;
+  overflow-x:auto;
 }
 
-.search-container input{
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  border:none;
-  background:var(--card);
+.menu::-webkit-scrollbar{display:none;}
+.menu a{
+  padding:8px 16px;
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  text-decoration:none;
   color:white;
-  font-size:14px;
-  outline:none;
-  border:1px solid #1c2240;
+  font-weight:700;
+  white-space:nowrap;
+  transition:.3s;
+  flex-shrink:0;
+  cursor:pointer;
 }
+.menu a.active{box-shadow:0 0 15px rgba(255,47,209,.7);}
+.menu a:hover{opacity:.8;}
 
 /* GRID */
 .grid{
-  padding:15px;
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  display:flex;
   gap:15px;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  padding:15px;
 }
 
 /* CARD */
@@ -78,52 +85,100 @@ header{
   cursor:pointer;
   transition:.3s;
   border:1px solid #1c2240;
+  width:200px;
   box-shadow:0 5px 20px rgba(0,0,0,.5);
 }
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px rgba(168,85,247,.5);
-}
-
 .card img{
   width:100%;
   height:140px;
   object-fit:cover;
   border-bottom:1px solid #1c2240;
 }
-
 .info{
   padding:12px;
   text-align:center;
 }
+.info h3{font-size:16px;margin-bottom:6px;}
+.price{font-weight:800;color:var(--accent-glow);}
 
-.info h3{
-  font-size:15px;
-  margin-bottom:6px;
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:1000;
 }
-
-.price{
-  font-weight:800;
+.modal.active{
+  opacity:1;
+  pointer-events:auto;
+}
+.modal-content{
+  background:linear-gradient(180deg,#0f1424,#0b0f1f);
+  border-radius:20px;
+  padding:20px;
+  max-width:350px;
+  width:90%;
+  text-align:center;
+  position:relative;
+  box-shadow:0 0 30px rgba(168,85,247,.7);
+}
+.modal-content img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+.modal-content h3{
+  font-size:18px;
+  margin-bottom:10px;
+}
+.modal-content .price{
+  margin-bottom:15px;
+}
+.close-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  font-size:22px;
+  cursor:pointer;
   color:var(--accent-glow);
 }
 
-/* HOT TAG */
-.hot{
-  position:relative;
+/* BUY BUTTON */
+.btn{
+  display:block;
+  width:90%;
+  margin:0 auto;
+  padding:12px 0;
+  border-radius:20px;
+  text-align:center;
+  text-decoration:none;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(255,47,209,.7);
 }
 
-.hot::before{
-  content:"HOT";
-  position:absolute;
-  top:8px;
-  left:8px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;
-  font-size:10px;
-  font-weight:700;
-  padding:4px 8px;
-  border-radius:20px;
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  color:var(--muted);
 }
 
 /* NAVBAR */
@@ -142,105 +197,15 @@ nav{
   box-shadow:0 10px 40px rgba(0,0,0,.8);
   border:1px solid #1c2240;
 }
+nav a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:700;transition:.3s;}
+nav a:hover{color:var(--accent-glow);}
+nav .active{color:var(--accent-glow);text-shadow:0 0 10px rgba(34,240,255,.6);}
 
-nav a{
-  text-decoration:none;
-  color:var(--muted);
-  font-size:14px;
-  font-weight:700;
-  transition:.3s;
-}
-
-nav a:hover{
-  color:var(--accent-glow);
-}
-
-nav .active{
-  color:var(--accent-glow);
-  text-shadow:0 0 10px rgba(34,240,255,.6);
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.8);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:100;
-  padding:15px;
-}
-
-.modal-content{
-  background:var(--card);
-  border-radius:20px;
-  max-width:400px;
-  width:100%;
-  padding:20px;
-  text-align:center;
-  position:relative;
-}
-
-.modal-content img{
-  width:100%;
-  border-radius:12px;
-  margin-bottom:15px;
-}
-
-.modal-content h3{
-  margin-bottom:10px;
-}
-
-.modal-content .price{
-  margin-bottom:15px;
-}
-
-.modal-content .description{
-  margin-bottom:15px;
-  font-size:14px;
-  color:var(--muted);
-}
-
-/* BUY NOW BUTTON */
-.buy-btn{
-  display:inline-block;
-  padding:12px 25px;
-  border-radius:20px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:white;
-  font-weight:700;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.buy-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(255,47,209,.7);
-}
-
-.close-btn{
-  position:absolute;
-  top:10px;
-  right:12px;
-  font-size:20px;
-  cursor:pointer;
-  color:var(--accent-glow);
-}
-
-/* MOBILE GRID */
-@media (max-width:768px){
-  .grid{
-    grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  }
-
-  header{
-    font-size:22px;
-    padding:20px;
-  }
+/* MOBILE */
+@media(max-width:768px){
+  .grid{justify-content:flex-start;}
+  .card{width:48%;}
+  .menu{padding:0 10px 15px 10px;}
 }
 </style>
 </head>
@@ -249,101 +214,100 @@ nav .active{
 
 <header>Marketplace</header>
 
-<div class="search-container">
-  <input type="text" id="searchInput" placeholder="Search account...">
+<!-- ЦЭС MENU -->
+<div class="menu">
+  <a class="active" data-category="all">All</a>
+  <a data-category="mlbb">MLBB</a>
+  <a data-category="pubg">PUBG</a>
+  <a data-category="standoff">Standoff</a>
+  <a data-category="roblox">Roblox</a>
+  <a data-category="others">Others</a>
 </div>
 
-<div class="grid" id="grid">
-  <!-- Cards injected by JS -->
+<!-- ACCOUNTS GRID -->
+<div class="grid">
+  <div class="card" data-category="mlbb">
+    <img src="acc (1).jpg" alt="MLBB Account">
+    <div class="info">
+      <h3>PUBG Account</h3>
+      <div class="price">500,000₮</div>
+    </div>
+  </div>
+
+  <div class="card" data-category="pubg">
+    <img src="acc (2).jpg" alt="PUBG Account">
+    <div class="info">
+      <h3>PUBG Account</h3>
+      <div class="price">600,000₮</div>
+    </div>
+  </div>
+
+  <div class="card" data-category="roblox">
+    <img src="acc3.jpg" alt="Roblox Account">
+    <div class="info">
+      <h3>PUBG Account</h3>
+      <div class="price">150,000₮</div>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
-    <span class="close-btn" id="closeModal">&times;</span>
-    <img id="modalImage" src="">
-    <h3 id="modalTitle"></h3>
-    <div class="price" id="modalPrice"></div>
-    <div class="description" id="modalDesc"></div>
-    <a href="https://www.facebook.com/profile.php?id=61583869546402" target="_blank" class="buy-btn">Buy Now</a>
+    <span class="close-btn" id="close">&times;</span>
+    <img id="modal-img" src="">
+    <h3 id="modal-title"></h3>
+    <div class="price" id="modal-price"></div>
+    <a href="https://www.messenger.com/t/925484607306771" target="_blank" class="btn">Buy Now</a>
   </div>
 </div>
+
+<div class="footer">© 2025 All Rights Reserved</div>
 
 <nav>
   <a href="index.html">Home</a>
   <a class="active">Shop</a>
-  <a href="https://www.facebook.com/groups/892849923142111/?ref=share_group_link&rdid=wEf5ww79Hy3AJFca&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1GEiugxgwD%2F#">Groups</a>
+  <a href="https://www.facebook.com/groups/892849923142111/?ref=share_group_link&rdid=snaCtm9jLVBx6fVH&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1GEiugxgwD%2F#">Groups</a>
 </nav>
 
 <script>
-// Account data
-const accounts = [
-  {
-    name:"Account 1",
-    price:"500,000₮",
-    img:"acc (1).jpg",
-    hot:true,
-    desc:"This is a high-level account with rare items."
-  },
-  {
-    name:"Account 2",
-    price:"600,000₮",
-    img:"acc (2).jpg",
-    hot:false,
-    desc:"Mid-tier account, good for starting players."
-  },
-  {
-    name:"Account 3",
-    price:"150,000₮",
-    img:"acc3.jpg",
-    hot:false,
-    desc:"Beginner account, affordable price."
-  }
-];
+// FILTER ACCOUNTS
+const menuLinks = document.querySelectorAll(".menu a");
+const cards = document.querySelectorAll(".grid .card");
 
-// Generate cards dynamically
-const grid = document.getElementById("grid");
-
-accounts.forEach(acc=>{
-  const card = document.createElement("div");
-  card.className = "card" + (acc.hot ? " hot" : "");
-  card.innerHTML = `
-    <img src="${acc.img}">
-    <div class="info">
-      <h3>${acc.name}</h3>
-      <div class="price">${acc.price}</div>
-    </div>
-  `;
-  card.addEventListener("click", ()=>{
-    document.getElementById("modalImage").src = acc.img;
-    document.getElementById("modalTitle").innerText = acc.name;
-    document.getElementById("modalPrice").innerText = acc.price;
-    document.getElementById("modalDesc").innerText = acc.desc;
-    document.getElementById("modal").style.display = "flex";
-  });
-  grid.appendChild(card);
-});
-
-// Search function
-const searchInput = document.getElementById("searchInput");
-searchInput.addEventListener("keyup", function(){
-  const value = this.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card=>{
-    let text = card.innerText.toLowerCase();
-    card.style.display = text.includes(value) ? "block" : "none";
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    menuLinks.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+    const category = link.dataset.category;
+    cards.forEach(card => {
+      card.style.display = (category === "all" || card.dataset.category === category) ? "block" : "none";
+    });
   });
 });
 
-// Close modal
-document.getElementById("closeModal").addEventListener("click", ()=>{
-  document.getElementById("modal").style.display = "none";
+// MODAL POP-UP
+const modal = document.getElementById("modal");
+const closeBtn = document.getElementById("close");
+const modalImg = document.getElementById("modal-img");
+const modalTitle = document.getElementById("modal-title");
+const modalPrice = document.getElementById("modal-price");
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    const img = card.querySelector("img").src;
+    const title = card.querySelector("h3").innerText;
+    const price = card.querySelector(".price").innerText;
+    modalImg.src = img;
+    modalTitle.innerText = title;
+    modalPrice.innerText = price;
+    modal.classList.add("active");
+  });
 });
 
-// Close modal on click outside content
-document.getElementById("modal").addEventListener("click", e=>{
-  if(e.target === document.getElementById("modal")){
-    document.getElementById("modal").style.display = "none";
-  }
+closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+modal.addEventListener("click", e => {
+  if(e.target === modal) modal.classList.remove("active");
 });
 </script>
 
