@@ -32,7 +32,6 @@ body{
   padding-bottom:90px;
 }
 
-/* HEADER */
 header{
   text-align:center;
   padding:25px;
@@ -44,7 +43,6 @@ header{
   text-shadow:0 0 15px rgba(168,85,247,.5);
 }
 
-/* MENU */
 .menu{
   display:flex;
   gap:12px;
@@ -67,7 +65,6 @@ header{
 .menu a.active{box-shadow:0 0 15px rgba(255,47,209,.7);}
 .menu a:hover{opacity:.8;}
 
-/* GRID */
 .grid{
   display:flex;
   gap:15px;
@@ -76,7 +73,6 @@ header{
   padding:15px;
 }
 
-/* CARD */
 .card{
   background:linear-gradient(180deg,#0f1424,#0b0f1f);
   border-radius:20px;
@@ -101,7 +97,6 @@ header{
 .info h3{font-size:16px;margin-bottom:6px;}
 .price{font-weight:800;color:var(--accent-glow);}
 
-/* SOLD BADGE */
 .sold{
   position:absolute;
   top:10px;
@@ -114,8 +109,21 @@ header{
   font-weight:800;
   z-index:10;
 }
+.featured{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+  z-index:10;
+  box-shadow:0 0 15px rgba(255,47,209,.7);
+}
 
-/* MODAL */
+
 .modal{
   position:fixed;
   top:0;
@@ -157,8 +165,16 @@ header{
   margin-bottom:10px;
 }
 .modal-content .price{
-  margin-bottom:15px;
+  margin-bottom:10px;
 }
+
+/* BIO STYLE (added only this visually tiny spacing) */
+#modal-bio{
+  margin-bottom:15px;
+  color:var(--muted);
+  font-size:14px;
+}
+
 .close-btn{
   position:absolute;
   top:10px;
@@ -168,7 +184,6 @@ header{
   color:var(--accent-glow);
 }
 
-/* BUY BUTTON */
 .btn{
   display:block;
   width:90%;
@@ -187,7 +202,6 @@ header{
   box-shadow:0 0 20px rgba(255,47,209,.7);
 }
 
-/* FOOTER */
 .footer{
   text-align:center;
   padding:20px;
@@ -195,7 +209,6 @@ header{
   color:var(--muted);
 }
 
-/* NAVBAR */
 nav{
   position:fixed;
   bottom:20px;
@@ -237,59 +250,71 @@ nav .active{color:var(--accent-glow);text-shadow:0 0 10px rgba(34,240,255,.6);}
 </div>
 
 <div class="grid">
-
-  <!-- ACC1 SOLD -->
-  <div class="card" data-category="pubg">
-    <div class="sold">SOLD</div>
-    <img src="acc (1).jpg" alt="PUBG Account">
-    <div class="info">
-      <h3>PUBG Account 1</h3>
-      <div class="price">500,000₮</div>
-    </div>
-  </div>
-
-  <!-- ACC2 SOLD -->
-  <div class="card" data-category="pubg">
-    <div class="sold">SOLD</div>
-    <img src="acc (2).jpg" alt="PUBG Account">
-    <div class="info">
-      <h3>PUBG Account 2</h3>
-      <div class="price">600,000₮</div>
-    </div>
-  </div>
-
-  <div class="card" data-category="pubg">
-    <img src="acc3.jpg" alt="PUBG Account">
-    <div class="info">
-      <h3>PUBG Account 3</h3>
-      <div class="price">150,000₮</div>
-    </div>
-  </div>
-
-  <div class="card" data-category="pubg">
-    <img src="acc4.jpg" alt="PUBG Account">
-    <div class="info">
-      <h3>PUBG Account 4</h3>
-      <div class="price">120,000₮</div>
-    </div>
-  </div>
-  
-  <div class="card" data-category="mlbb">
-    <img src="acc5.jpg" alt="PUBG Account">
+   
+  <div class="card" data-category="mlbb" data-bio="All Heroes">
+    <div class="featured">ОНЦЛОХ</div>
+    <img src="acc5.jpg">
     <div class="info">
       <h3>Түрээслэн 24 Цаг</h3>
       <div class="price">4,500₮</div>
     </div>
   </div>
 
+  
+
+  
+  <div class="card" data-category="pubg" data-bio="">
+    <img src="acc4.jpg">
+    <div class="info">
+      <h3>PUBG Account 1</h3>
+      <div class="price">120,000₮</div>
+    </div>
+  </div>
+  
+  <div class="card" data-category="pubg" data-bio="Bind-FB">
+    <img src="pubgerkh.jpg">
+    <div class="info">
+      <h3>PUBG Account 2</h3>
+      <div class="price">40,000₮</div>
+    </div>
+  </div>
+  
+  <div class="card" data-category="mlbb" data-bio="">
+    <img src="Sulde ml (1).jpg">
+    <div class="info">
+      <h3>MLBB Account 2</h3>
+      <div class="price">100,000₮</div>
+    </div>
+  </div>
+  
+  <div class="card" data-category="standoff" data-bio="">
+    <img src="Sulde ml (2).jpg">
+    <div class="info">
+      <h3>SO2 Account 1</h3>
+      <div class="price">75,000₮</div>
+    </div>
+  </div>
+  
+  <div class="card" data-category="mlbb" data-bio="Suitable for girls">
+    <img src="chingun.jpg">
+    <div class="info">
+      <h3>MLBB Account 3</h3>
+      <div class="price">80,000₮</div>
+    </div>
+  </div>
+  
+
+
+
 </div>
 
 <div class="modal" id="modal">
   <div class="modal-content">
     <span class="close-btn" id="close">&times;</span>
-    <img id="modal-img" src="">
+    <img id="modal-img">
     <h3 id="modal-title"></h3>
     <div class="price" id="modal-price"></div>
+    <div id="modal-bio"></div>
     <a href="https://www.messenger.com/t/925484607306771" target="_blank" class="btn">Buy Now</a>
   </div>
 </div>
@@ -322,16 +347,15 @@ const closeBtn = document.getElementById("close");
 const modalImg = document.getElementById("modal-img");
 const modalTitle = document.getElementById("modal-title");
 const modalPrice = document.getElementById("modal-price");
+const modalBio = document.getElementById("modal-bio");
 
 cards.forEach(card => {
   card.addEventListener("click", () => {
-    if(card.querySelector(".sold")) return; // prevent modal if sold
-    const img = card.querySelector("img").src;
-    const title = card.querySelector("h3").innerText;
-    const price = card.querySelector(".price").innerText;
-    modalImg.src = img;
-    modalTitle.innerText = title;
-    modalPrice.innerText = price;
+    if(card.querySelector(".sold")) return;
+    modalImg.src = card.querySelector("img").src;
+    modalTitle.innerText = card.querySelector("h3").innerText;
+    modalPrice.innerText = card.querySelector(".price").innerText;
+    modalBio.innerText = card.dataset.bio || "";
     modal.classList.add("active");
   });
 });
